@@ -1,28 +1,34 @@
-#include <bits/stdc++.h>
-#define MAX 3000010
+#include<bits/stdc++.h>
+#define MAX 500005
 #define ll long long int
+#define iterator std::vector<int>::iterator 
 using namespace std;
 
-int NC,N;
-vector<int> v(MAX,0);
-
 void fun(){
-    cin >> NC;
-    while(NC){
 
-        cin >> N;
+    int n,k,x,i;
+    ll soma=0;
+    vector<int> v(MAX);
+    cin >> n >> k;
+    v[0]=0;
+    for(i=1;i<=n;i++){
+        cin >> x;
+        v[i] = v[i-1]+x;
 
-        for(int i=0;i<N;i++)cin>>v[i];
-
-        sort(v.begin(),v.begin()+N);
-
-        for(int i=0;i<N;i++){cout<<v[i];if(i!=N-1)cout<<" ";}cout<<endl;
-
-        NC--;
     }
+    for(i=0;i<=n;i++){
+        x = v[i]-k;
+        if(x>=0){
+            iterator low = lower_bound(v.begin(),v.begin()+i,x);
+            if(x == *low){
+                iterator up  = upper_bound(v.begin(),v.begin()+i,x);
+                soma+=up-low;
+            }
+        }
+    }
+    cout << soma <<endl;
+
 }
-
-
 
 int main(){
     ios_base::sync_with_stdio(false);cin.tie(NULL);
