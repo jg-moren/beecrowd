@@ -1,36 +1,27 @@
 #include<bits/stdc++.h>
-#define MAX 1000100
+#define P 'z'+1
 using namespace std;
 
 int N,C;
-vector<string> palavras(MAX);
-vector<int> cont(MAX);
-vector<int> lex(MAX);
-
+map<string,int>p;
+string s;
 
 void fun(){
     cin >> N >> C;
-    for(int i=0;i<N;i++){cin>>palavras[i];cont[i]=0;}
-    for(int i=0;i<N;i++){
-        for(int j=0;j<N;j++){
-            int match = true;
-            for(int c=0;c<C;c++){
-                lex[i]+=palavras[i][c];
-                if(
-                    palavras[i][c]!='*' &&
-                    palavras[j][c]!='*' &&
-                    palavras[i][c]!=palavras[j][c])match=false;
-            }
-            if(match)cont[i]++;
-        }
+    while(N--){
+        cin >> s;
+        int a;
+        for(int i=0;i<C;i++)if(s[i]=='*')a=i;
+        for(int c='a';c<='z';c++){s[a]=c;p[s]+=1;}
     }
-    int maior=0;
-    for(int i=0;i<N;i++){
-        if(cont[i]>cont[maior]||cont[i]==cont[maior] && lex[i]<lex[maior])maior=i;
+    string rs;
+    int rr;
+    for(auto e : p){
+        if(rs==""){rs = e.first;rr=e.second;}
+        if(e.second > rr){rs = e.first;rr=e.second;}
     }
+    cout << rs << " " << rr << endl;
 
-    
-    cout << palavras[maior] << " " << cont[maior] << endl;
 }
 
 int main(){

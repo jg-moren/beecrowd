@@ -1,6 +1,4 @@
 #include<bits/stdc++.h>
-#define ll long long int
-#define MAX 100010
 using namespace std;
 
 int N,b;

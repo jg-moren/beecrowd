@@ -1,13 +1,10 @@
 #include<bits/stdc++.h>
-#define ll long long int
 using namespace std;
 
 int N,X,Y,r;
 float coo [2]={0,0};
-//int dir[4][2] = {{1,-1},{1,1},{-1,1},{-1,-1}};
 
 int bt(int x, int y,int cont){
-    //printf("%d %d [%d]\n",x,y,N>>cont);
     if(x == X && y == Y){return cont;}
     if(!N>>cont)return 0;
     else{
