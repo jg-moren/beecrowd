@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
-#define vc vector<char>
-#define it vector<char>::iterator
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define it vector<int>::iterator
 #define s second
 #define f first
 
@@ -11,21 +12,19 @@ const int MAX = 1e5+10;
 
 using namespace std;
 
-string line;
-vc text;
-int i;
+int N,H,A;
+int cont=0;
 
 void fun(){
-    while(cin>>line){
-        i = 0;
-        for(char c:line){
-            if(c == '[')i=text.size();
-            else if(c == ']')i=0;
-            else text.insert(text.begin()+i,c);
+    cin>>N>>H;
+
+    while(N--){
+        cin>>A;
+        if(H>=A){
+            cont+=1;
         }
-        for(int j=text.size()-1;j>=0;j--)cout<<text[j];cout<<endl;
-        text.clear();
     }
+    cout<<cont<<endl;
 }
 
 int main(){

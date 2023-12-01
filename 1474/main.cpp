@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
-#define vc vector<char>
-#define it vector<char>::iterator
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define it vector<int>::iterator
 #define s second
 #define f first
 
@@ -11,21 +12,22 @@ const int MAX = 1e5+10;
 
 using namespace std;
 
-string line;
-vc text;
-int i;
+ll N,K,L;
+
+ll pos=1;
+
+ll org(int t, int p,int g){
+    if(t==0)return 1;
+    if(t-10>=0){return ((org(t-10,p,g) * g) + (org(t-5 ,p,g) * p));}
+    if(t-5>=0) {return (org(t-5 ,p,g) * p);}
+    return 1;
+}
 
 void fun(){
-    while(cin>>line){
-        i = 0;
-        for(char c:line){
-            if(c == '[')i=text.size();
-            else if(c == ']')i=0;
-            else text.insert(text.begin()+i,c);
-        }
-        for(int j=text.size()-1;j>=0;j--)cout<<text[j];cout<<endl;
-        text.clear();
-    }
+    while(cin>>N>>K>>L){
+
+        printf("%lld\n",org(N,K,L));
+    };
 }
 
 int main(){

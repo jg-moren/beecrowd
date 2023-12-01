@@ -14,21 +14,14 @@ void fun(){
     cin >> N >> C;
     for(int i=0;i<N;i++)cin>>v[i];
     for(int i=0;i<N-1;i++)v[i]=v[i+1]-v[i];
-    //for(int i=0;i<N-1;i++)printf("%d ",v[i]);printf("\n");    
-    //for(int i=1;i<N-1;i++)v[i]=v[i]+v[i-1];
     sum =-C;
     maior=0;
     for(int i=0;i<N-1;i++){
-        
         if(sum+v[i]<=maior-C){lucro+=maior;sum=-C;maior=0;}
         else sum+=v[i];
         if(sum > maior)maior = sum;
-        
-    //    printf("%d ",maior);
     };
-    lucro+=maior;
-    //printf("\n");
-    //for(int i=0;i<N-1;i++)printf("%d ",v[i]);printf("\n");    
+    lucro+=maior;   
     cout<<lucro<<endl;
 }
 

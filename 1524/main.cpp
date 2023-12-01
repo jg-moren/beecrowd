@@ -1,30 +1,29 @@
 #include <bits/stdc++.h>
-#define vc vector<char>
-#define it vector<char>::iterator
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define it vector<int>::iterator
 #define s second
 #define f first
 
 typedef long long ll;
 const int INF = 0x3f3f3f3f;
 const ll LINF = 0x3f3f3f3f3f3f3f3fll;
-const int MAX = 1e5+10;
+const int MAX = 1e6+10;
 
 using namespace std;
 
-string line;
-vc text;
-int i;
+int N, K;
+vi fila(MAX,0);
+vi dist(MAX,0);
 
 void fun(){
-    while(cin>>line){
-        i = 0;
-        for(char c:line){
-            if(c == '[')i=text.size();
-            else if(c == ']')i=0;
-            else text.insert(text.begin()+i,c);
-        }
-        for(int j=text.size()-1;j>=0;j--)cout<<text[j];cout<<endl;
-        text.clear();
+    while(cin>>N>>K){
+        for(int i=1;i<N;i++)cin>>fila[i];
+        for(int i=1;i<N;i++)dist[i]=fila[i]-fila[i-1];
+        sort(begin(dist),begin(dist)+N);
+        int cont=0;
+        for(int i=0;i<N-(K-1);i++)cont+=dist[i];
+        cout<<cont<<endl;
     }
 }
 
