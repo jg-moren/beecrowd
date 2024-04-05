@@ -12,22 +12,17 @@ const int MAX = 1e5+10;
 
 using namespace std;
 
-ll N,K,L;
-
-ll pos=1;
-
-ll org(int t, int p,int g){
-    if(t==0)return 1;
-    if(t-10>=0){return ((org(t-10,p,g) * g) + (org(t-5 ,p,g) * p));}
-    if(t-5>=0) {return (org(t-5 ,p,g) * p);}
-    return 1;
-}
-
+int C,a,m=100,v=100;
 void fun(){
-    while(cin>>N>>K>>L){
-
-        printf("%lld\n",org(N,K,L));
-    };
+    cin>>C;
+    while (C--)
+    {
+        cin>>a;
+        v+=a;
+        if(v>m)m=v;
+    }
+    
+    cout<<m<<endl;
 }
 
 int main(){
